@@ -49,6 +49,8 @@
     text-align: right;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    overflow: -moz-hidden-unscrollable;
+    text-overflow: ellipsis;
 }
 #results{
     grid-column: 1/5;
@@ -61,6 +63,8 @@
     padding:0.5em;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    overflow: -moz-hidden-unscrollable;
+    text-overflow: ellipsis;
 }
 #equals{
     background-color: #de6600; 

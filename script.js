@@ -51,6 +51,7 @@ function display(str,id){
 }
 
 function clear_screen(){
+    animation();
     displayString="";
     display("","screen");
     display("0","results");
@@ -63,8 +64,12 @@ function delete_last(){
 }
 
 function equals(){
-    const equal= document.getElementById('results');
-    equal.classList.toggle("animate");
+    animation();
     calculate(displayString,displayString.length);
     
+}
+
+function animation(){
+    const equal= document.getElementById('results');
+    equal.classList.toggle("animate");
 }
