@@ -28,17 +28,23 @@ function isOperator(char){
 function calculate(str,length){
     let result;//length is the number of characters to be removed from the beginning while displaying the string
     display(str,"screen");
-    str=displayString.substr(0,length),
+    str=displayString.substr(0,length);
+    if(divisionByZero(str)){
+        alert("Error:Division by zero");
+        return;
+    }
     result=evaluate(str);
-    console.log(result);
     displayString=displayString.replace(str,result);
     display(displayString,"results");
 }
 
 function evaluate(str){
-    return new Function('return ('+str+'*1);')//multiplying the answer by 1 to ignore expected expression error
+    return new Function('"use strict";return ('+str+');')
 }
 
+function divisionByZero(str){
+    return str.endsWith(`/0`);
+}
 function display(str,id){
     const div = document.getElementById(id);
     div.innerText= str;
@@ -57,5 +63,8 @@ function delete_last(){
 }
 
 function equals(){
+    const equal= document.getElementById('results');
+    equal.classList.toggle("animate");
     calculate(displayString,displayString.length);
+    
 }

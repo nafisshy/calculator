@@ -70,3 +70,17 @@
 #equals:hover{
     background-color: #e78128;
 }
+
+.animate{
+    animation-duration: 0.2s;
+    animation-name: fade;
+}
+
+@keyframes fade {
+    from{
+        color:rgb(44, 41, 41);
+    }
+    to{
+        color:rgb(214, 195, 195);
+    }
+}
