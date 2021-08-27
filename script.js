@@ -1,4 +1,5 @@
 let displayString="";
+let lastResult="";
 create_values();
 clear_screen();
 
@@ -26,15 +27,21 @@ function isOperator(char){
 }
 
 function calculate(str,length){
-    let result;//length is the number of characters to be removed from the beginning while displaying the string
+    
+    let result;//length is the number of characters to be removed from the beginning while displaying the result
     display(str,"screen");
     str=displayString.substr(0,length);
     if(divisionByZero(str)){
-        alert("Error:Division by zero");
+        alert("Error: Division by zero");
+        return;
+    }
+    if(hasRepeatedDecimal(str.substring((lastResult.length)))){//passing the second operand
+        alert("Error: Repeated decimal");
         return;
     }
     result=evaluate(str);
     displayString=displayString.replace(str,result);
+    lastResult=displayString;//keeping track of the previous result to acess the new operand and check for repeated decimal.
     display(displayString,"results");
 }
 
@@ -44,6 +51,16 @@ function evaluate(str){
 
 function divisionByZero(str){
     return str.endsWith(`/0`);
+}
+
+function hasRepeatedDecimal(str){
+    let count=0;
+    let arr=str.split("");
+    arr.forEach(char=>{
+        if(char=="."){
+            count++;
+        }});
+    return count>1;
 }
 function display(str,id){
     const div = document.getElementById(id);
