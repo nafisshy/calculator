@@ -47,6 +47,7 @@ function calculate(str,length){
 
 function evaluate(str){
     return new Function('"use strict";return ('+str+');')
+    
 }
 
 function divisionByZero(str){
@@ -82,8 +83,13 @@ function delete_last(){
 
 function equals(){
     animation();
-    calculate(displayString,displayString.length);
-    
+    try{
+        calculate(displayString,displayString.length);
+    }
+    catch{
+        alert("Invalid Expression");
+        clear_screen();
+    }
 }
 
 function animation(){
