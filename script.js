@@ -1,5 +1,6 @@
 let displayString="";
 let lastResult="";
+let pressedEquals=false;
 create_values();
 clear_screen();
 
@@ -14,6 +15,12 @@ function create_values(){
             //if the last character entered is an operator, results will be displayed
             if(isOperator(displayString.charAt(displayString.length-1))){
                 calculate(displayString,displayString.length-1);
+            }
+            else if(pressedEquals){
+                clear_screen();
+                displayString+=char.value;
+                pressedEquals=false;
+                display(displayString,"results");
             }
         });
     });
@@ -90,6 +97,7 @@ function equals(){
         alert("Invalid Expression");
         clear_screen();
     }
+    pressedEquals=true;
 }
 
 function animation(){
