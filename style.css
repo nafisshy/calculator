@@ -17,6 +17,14 @@
     padding: 1.5em;
     border-radius: 10px;
 }
+/*adjusting container width for smaller screens*/
+@media only screen and (max-width: 600px) {
+    .container{
+      width:100%;
+      height:100%;
+      margin: auto;
+    }
+  }
 .btn{
     font-size: large;
 }
